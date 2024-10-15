@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и Вход - Неоновый Стиль</title>
+    <style>
+        /* Общие стили для неонового стиля */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            background-image: url(./1.jpg);
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.2);
+            width: 400px;
+            text-align: center;
+            margin-top: 140px;
+        }
+
+        h2 {
+            color: #0ff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            margin-bottom: 70px;
+            font-size: 50px;
+            margin-top: -15px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #0ff;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #0ff;
+            border-radius: 5px;
+            background: #000;
+            color: #0ff;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+
+        .checkbox-container label {
+            font-size: 14px;
+            color: #0ff;
+            text-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
+        }
+
+        button {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            background-color: #0ff;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00ffcc;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        .message {
+            color: #1aff00;
+            font-size: 14px;
+            text-shadow: 0 0 8px rgba(255, 0, 102, 0.8);
+            margin: 5%;
+        }
+
+        /* Анимация для более неонового эффекта */
+        @keyframes neonGlow {
+            0%, 100% {
+                box-shadow: 0 0 5px #1f0a88, 0 0 5px #750ea5, 0 0 25px #780aa7, 0 0 5px #230396;
+            }
+            50% {
+                box-shadow: 0 0 5px #1f0a88, 0 0 5px #750ea5, 0 0 25px #780aa7, 0 0 5px #230396;
+            }
+        }
+
+        button {
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        /* Стили для навбара */
+        .nav-bar {
+            width: 100%;
+            height: 60px;
+            background: #141414;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            font-size: 16px;
+        }
+
+        .nav-links-desktop {
+            list-style: none;
+            display: inline-flex;
+            padding: 0;
+        }
+
+        .nav-links-desktop a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 35px;
+            font-size: 18pt;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 500;
+        }
+        
+        .nav-links-desktop a:hover {
+            color: #00ffcc;
+        }
+
+        .bottom-text {
+        text-align: center;
+        color: #c4bec4;
+        margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <ul class="nav-links-desktop">
+            <a href="index.html">Регистрация участников</a>
+            <a href="2.html">Фотогалерея</a>
+            <a href="3.html">Регистрация на сайт</a>
+            <a href="indexx.html">Лендинг</a>
+        </ul>
+    </div>
+
+    <div id="registration-form" class="form-container">
+        <h2>Регистрация</h2>
+        <form onsubmit="registerUser(event)">
+            <label for="login">Логин:</label>
+            <input type="text" id="login" required pattern="[A-Za-z0-9_-]+">
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" required minlength="6">
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Сохранить данные</label>
+            </div>
+
+            <div class="message" id="register-message"></div>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+
+    <!-- Логика формы входа, страницы сообщений и т.д. -->
+    <script>
+        let users = [];
+
+        function isLoginUnique(login) {
+            return !users.some(user => user.login === login);
+        }
+
+        function registerUser(event) {
+            event.preventDefault();
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            const message = document.getElementById('register-message');
+
+            if (isLoginUnique(login)) {
+                users.push({ login, password });
+                if (remember) {
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+                message.textContent = 'Регистрация прошла успешно! Идет переход на страницу входа';
+                setTimeout(showLoginForm, 1000);
+            } else {
+                message.textContent = 'Пользователь с таким логином уже существует!';
+            }
+        }
+
+        function showLoginForm() {
+            document.getElementById('registration-form').style.display = 'none';
+            // Логика для отображения формы входа
+        }
+
+        window.onload = function() {
+            const savedUsers = localStorage.getItem('users');
+            if (savedUsers) {
+                users = JSON.parse(savedUsers);
+            }
+        };
+    </script>
+    <p class="bottom-text">&copy; iT Daria Nikolaeva 2024 - 2025</p>
+</body>
+</html>
